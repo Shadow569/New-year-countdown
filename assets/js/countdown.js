@@ -39,42 +39,6 @@ var getCountdownObject = function(){
     return countdownObj;
 }
 
-var testNewYearObj = function(){
-    return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-    };
-}
-
-var testCloseDate = function(){
-    return {
-        days: 6,
-        hours: 23,
-        minutes: 59,
-        seconds: 59
-    }
-}
-
-var testEveDateWithHoursToGo = function(){
-    return {
-        days: 0,
-        hours: 2,
-        minutes: 0,
-        seconds: 0
-    }
-}
-
-var testEveDate = function(){
-    return {
-        days: 0,
-        hours: 1,
-        minutes: 59,
-        seconds: 59
-    }
-}
-
 var updateCountdownUi = function(){
     var countDownObj = getCountdownObject();
     $("#countdown_days").text(countDownObj.days);
