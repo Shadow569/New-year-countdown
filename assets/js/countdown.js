@@ -84,6 +84,7 @@ var updateYear = function(){
     var currentDate = new Date();
 
     $("#new_year").text(currentDate.getFullYear() + 1);
+    $("#new_year_display").text(currentDate.getFullYear() + 1);
 }
 
 $(document).ready(function(){

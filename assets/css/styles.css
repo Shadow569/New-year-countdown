@@ -10,7 +10,7 @@ body{
 .countdown-box {
     padding: 1em;
     background: #9f9;
-    width: 450px;
+    width: 500px;
     margin: 0 auto;
     text-align: center;
 }
@@ -18,18 +18,24 @@ body{
 .countdown-container .countdown-element {
     display: inline-block;
     margin-right: 0.5em;
-    padding: 0.5em;
-    border: 2px solid #FFF;
-    border-radius: 0.2em;
     color: #FFF;
     font-size: 18px;
     background: #28ce28;
     margin-left: 0.5em;
+    min-width: 88px;
+    box-shadow: 1px 3px 0.2em 0.1em #CCC;
+}
+
+.countdown-container .countdown-element .countdown-label {
+    padding: 0.2em;
+    background: #FFF;
+    color: #28ce28;
 }
 
 .countdown-container .countdown-box .countdown-value {
     font-weight: bold;
-    font-size: 46px;
+    font-size: 50px;
+    padding: 0.1em;
 }
 
 .countdown-container .countdown-box .hidden{
@@ -43,10 +49,11 @@ body{
 }
 
 body h1{
-    width: 450px;
+    width: 500px;
     margin: 0 auto;
     padding: 0.5em;
     background: #45e445;
+    color: #FFF;
 }
 
 .countdown-container .countdown-element.closing-in{
