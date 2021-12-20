@@ -1,5 +1,14 @@
 body{
     text-align: center;
+    background-image: url('../images/Thailand_Christmas_New_Year_1600.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    top: 30%;
 }
 
 .countdown-container {
