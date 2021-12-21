@@ -9,10 +9,10 @@ body{
     position: absolute;
     width: 100%;
     top: 30%;
+    left: 0;
 }
 
 .countdown-container {
-    width: 60%;
     margin: 0 auto;
 }
 
@@ -22,6 +22,7 @@ body{
     width: 500px;
     margin: 0 auto;
     text-align: center;
+    box-shadow: 2px 2px 0.2em 0.1em #AAA;
 }
 
 .countdown-container .countdown-element {
@@ -58,11 +59,13 @@ body{
 }
 
 body h1{
+    border-bottom: 4px solid #3838df;
     width: 500px;
     margin: 0 auto;
     padding: 0.5em;
     background: #3100b7;
     color: #FFF;
+    box-shadow: 4px 2px 0.1em 0em #AAA;
 }
 
 .countdown-container .countdown-element.closing-in{
@@ -72,4 +75,67 @@ body h1{
 
 .countdown-container .countdown-element.very-close{
     color: rgb(247, 61, 61)
+}
+
+
+@media screen and (max-width: 629px) and (min-width: 460px) {
+    body h1{
+        width: 400px;
+        font-size: 27px;
+    }
+
+    .countdown-box{
+        width: 395px;
+    }
+
+    .countdown-container .countdown-element{
+        min-width: 80px;
+        margin-right: 0.3em;
+        font-size: 15px;
+    }
+    .countdown-container .countdown-box .countdown-value{
+        font-size: 30px;
+    }
+
+    .countdown-container .countdown-element .countdown-label{
+        padding: 0.1em;
+    }
+
+    body{
+        background-image: url('../images/Thailand_Christmas_New_Year_tablet.jpg');
+    }
+}
+
+@media screen and (max-width: 459px){
+    body{
+        background-image: url('../images/Thailand_Christmas_New_Year_mobile.jpg');
+    }
+
+    body h1{
+        font-size: 20px;
+        width: 300px;
+    }
+
+    .countdown-container .countdown-element{
+        margin-right: 0.2em;
+        margin-left: 0.2em;
+        min-width: 60px;
+        font-size: 12px;
+    }
+
+    .countdown-box{
+        width: 288px;
+    }
+
+    .countdown-container .countdown-box .countdown-value {
+        font-size: 25px;
+    }
+
+    .countdown-container .countdown-element .countdown-label {
+        padding: 0.1em;
+    }
+
+    .container{
+        top: 20%;
+    }
 }
