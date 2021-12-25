@@ -9,7 +9,7 @@ var getCountdownObject = function(){
 
     const HOURS_FOR_NEW_YEAR = 0;
     const MINUTES_FOR_NEW_YEAR = 0;
-    const SECONDS_FOR_NEW_YEAR = 0;
+    const SECONDS_FOR_NEW_YEAR = 1;
     var currentDate = new Date();
     var newYearDate = new Date(currentDate.getFullYear() + 1, MONTH_JANUARY, DATE_FOR_NEW_YEAR, HOURS_FOR_NEW_YEAR, MINUTES_FOR_NEW_YEAR, SECONDS_FOR_NEW_YEAR);
 
@@ -90,7 +90,7 @@ var updateYear = function(){
 $(document).ready(function(){
     updateYear();
     updateCountdownUi();
-    var countdownIntvalId = setInterval(updateCountdownUi, 1000);
+    var countdownIntvalId = setInterval(updateCountdownUi, 500);
 
     if(!$("#new_year_greeting").hasClass('hidden')){
         clearInterval(countdownIntvalId);

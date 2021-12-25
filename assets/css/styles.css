@@ -69,16 +69,16 @@ body h1{
 }
 
 .countdown-container .countdown-element.closing-in{
-    color: rgb(250, 255, 90);
+    color: rgb(235, 255, 95)
 }
 
 
 .countdown-container .countdown-element.very-close{
-    color: rgb(247, 61, 61)
+    color: rgb(251, 126, 87)
 }
 
 
-@media screen and (max-width: 629px) and (min-width: 460px) {
+@media screen and (max-width: 827px) and (min-width: 460px) {
     body h1{
         width: 400px;
         font-size: 27px;
