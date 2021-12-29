@@ -52,8 +52,7 @@ var updateCountdownUi = function(){
         countDownObj.minutes == 0 &&
         countDownObj.seconds == 0
     ){
-        $("#new_year_greeting").removeClass('hidden');
-        playNewYearGreeting();
+        $("body").trigger('new_year_greeting');
     }
     else if (
         (
@@ -114,9 +113,12 @@ var updateYear = function(){
 $(document).ready(function(){
     updateYear();
     updateCountdownUi();
-    var countdownIntvalId = setInterval(updateCountdownUi, 500);
 
-    if(!$("#new_year_greeting").hasClass('hidden')){
+    $("body").bind('new_year_greeting', (e) => {
+        $("#new_year_greeting").removeClass('hidden');
+        playNewYearGreeting();
         clearInterval(countdownIntvalId);
-    }
+    });
+    
+    var countdownIntvalId = setInterval(updateCountdownUi, 500);
 });
