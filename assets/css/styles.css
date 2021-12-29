@@ -53,9 +53,12 @@ body{
 }
 
 .countdown-container .countdown-box .countdown-new-year h2{
-    color: #000;
+    color: #FFF;
     font-weight: bold;
     font-size: 46px;
+    box-shadow: 0 0 0.2em 0.1em #666;
+    padding: 0.5em;
+    background: #933;
 }
 
 body h1{

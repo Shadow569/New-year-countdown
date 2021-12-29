@@ -9,7 +9,7 @@ var getCountdownObject = function(){
 
     const HOURS_FOR_NEW_YEAR = 0;
     const MINUTES_FOR_NEW_YEAR = 0;
-    const SECONDS_FOR_NEW_YEAR = 1;
+    const SECONDS_FOR_NEW_YEAR = 0;
     var currentDate = new Date();
     var newYearDate = new Date(currentDate.getFullYear() + 1, MONTH_JANUARY, DATE_FOR_NEW_YEAR, HOURS_FOR_NEW_YEAR, MINUTES_FOR_NEW_YEAR, SECONDS_FOR_NEW_YEAR);
 
@@ -41,10 +41,10 @@ var getCountdownObject = function(){
 
 var updateCountdownUi = function(){
     var countDownObj = getCountdownObject();
-    $("#countdown_days").text(countDownObj.days);
-    $("#countdown_hours").text(countDownObj.hours);
-    $("#countdown_minutes").text(countDownObj.minutes);
-    $("#countdown_seconds").text(countDownObj.seconds);
+
+    Object.entries(countDownObj).forEach(([field, value]) => {
+        $("#countdown_"+field).text(value);
+    });
 
     if(
         countDownObj.days == 0 &&
@@ -53,6 +53,7 @@ var updateCountdownUi = function(){
         countDownObj.seconds == 0
     ){
         $("#new_year_greeting").removeClass('hidden');
+        playNewYearGreeting();
     }
     else if (
         (
@@ -76,6 +77,29 @@ var updateCountdownUi = function(){
         $(".countdown-container .countdown-element").removeClass('closing-in');
         $(".countdown-container .countdown-element").addClass('very-close')
     }
+    else if(
+        countDownObj.days == 0 &&
+        countDownObj.hours == 0 &&
+        countDownObj.minutes == 0 &&
+        countDownObj.seconds > 0 &&
+        countDownObj.seconds < 6
+    ){
+        playSoundEffect(countDownObj.seconds);
+    }
+}
+
+var playSoundEffect = function(number){
+    var audioFile = 'assets/audio/number_' + number + '.mp3';
+    var audioHandler = new Audio(audioFile);
+    audioHandler.play();
+    return true;
+}
+
+var playNewYearGreeting = function(){
+    var audioFile = 'assets/audio/new_year_greeting.mp3';
+    var audioHandler = new Audio(audioFile);
+    audioHandler.play();
+    return true;
 }
 
 
@@ -88,6 +112,7 @@ var updateYear = function(){
 }
 
 $(document).ready(function(){
+    $("body").trigger('click');
     updateYear();
     updateCountdownUi();
     var countdownIntvalId = setInterval(updateCountdownUi, 500);
