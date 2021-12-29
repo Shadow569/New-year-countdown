@@ -112,7 +112,6 @@ var updateYear = function(){
 }
 
 $(document).ready(function(){
-    $("body").trigger('click');
     updateYear();
     updateCountdownUi();
     var countdownIntvalId = setInterval(updateCountdownUi, 500);
