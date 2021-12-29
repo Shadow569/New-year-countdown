@@ -39,6 +39,61 @@ var getCountdownObject = function(){
     return countdownObj;
 }
 
+var testCountdownUi = function(){
+    for(var i=5; i>=0; i--){
+        var countDownObj = {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: i
+        }
+
+        Object.entries(countDownObj).forEach(([field, value]) => {
+            $("#countdown_"+field).text(value);
+        });
+    
+        if(
+            countDownObj.days == 0 &&
+            countDownObj.hours == 0 &&
+            countDownObj.minutes == 0 &&
+            countDownObj.seconds == 0
+        ){
+            $("body").trigger('new_year_greeting');
+        }
+        else if (
+            (
+                (
+                    countDownObj.days < 7 &&
+                    countDownObj.days > 0) ||
+                (
+                    countDownObj.days == 0 &&
+                    countDownObj.hours >= 2
+                )
+            ) &&
+            !$(".countdown-container .countdown-element").hasClass('closing-in')
+        ) {
+            $(".countdown-container .countdown-element").addClass('closing-in');
+        }
+        else if (
+            countDownObj.days == 0 &&
+            countDownObj.hours < 2 &&
+            !$(".countdown-container .countdown-element").hasClass('very-close')
+        ){
+            $(".countdown-container .countdown-element").removeClass('closing-in');
+            $(".countdown-container .countdown-element").addClass('very-close')
+        }
+        else if(
+            countDownObj.days == 0 &&
+            countDownObj.hours == 0 &&
+            countDownObj.minutes == 0 &&
+            countDownObj.seconds > 0 &&
+            countDownObj.seconds < 6
+        ){
+            playSoundEffect(countDownObj.seconds);
+        }
+    }
+}
+
 var updateCountdownUi = function(){
     var countDownObj = getCountdownObject();
 
@@ -52,8 +107,7 @@ var updateCountdownUi = function(){
         countDownObj.minutes == 0 &&
         countDownObj.seconds == 0
     ){
-        $("#new_year_greeting").removeClass('hidden');
-        playNewYearGreeting();
+        $("body").trigger('new_year_greeting');
     }
     else if (
         (
@@ -114,9 +168,12 @@ var updateYear = function(){
 $(document).ready(function(){
     updateYear();
     updateCountdownUi();
-    var countdownIntvalId = setInterval(updateCountdownUi, 500);
 
-    if(!$("#new_year_greeting").hasClass('hidden')){
+    $("body").bind('new_year_greeting', (e) => {
+        $("#new_year_greeting").removeClass('hidden');
+        playNewYearGreeting();
         clearInterval(countdownIntvalId);
-    }
+    });
+    
+    var countdownIntvalId = setInterval(updateCountdownUi, 500);
 });
