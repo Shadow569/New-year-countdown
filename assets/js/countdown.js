@@ -1,3 +1,5 @@
+var playedSongs = [];
+
 var getCountdownObject = function(){
     const SECS_IN_A_DAY = 86400;
     const SECS_IN_AN_HOUR = 3600;
@@ -12,7 +14,6 @@ var getCountdownObject = function(){
     const SECONDS_FOR_NEW_YEAR = 0;
     var currentDate = new Date();
     var newYearDate = new Date(currentDate.getFullYear() + 1, MONTH_JANUARY, DATE_FOR_NEW_YEAR, HOURS_FOR_NEW_YEAR, MINUTES_FOR_NEW_YEAR, SECONDS_FOR_NEW_YEAR);
-
     var diffSecs = Math.round((newYearDate - currentDate) / 1000);
 
     var days = Math.floor(diffSecs / SECS_IN_A_DAY);
@@ -83,7 +84,11 @@ var updateCountdownUi = function(){
         countDownObj.seconds > 0 &&
         countDownObj.seconds < 11
     ){
+        if(playedSongs.includes(countDownObj.seconds)){
+            return;
+        }
         playSoundEffect(countDownObj.seconds);
+        playedSongs.push(countDownObj.seconds);
     }
 }
 
